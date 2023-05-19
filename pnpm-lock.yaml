@@ -1,0 +1,22 @@
+lockfileVersion: '6.0'
+
+dependencies:
+  jiti:
+    specifier: ^1.18.2
+    version: 1.18.2
+  pnpm:
+    specifier: ^8.5.1
+    version: 8.5.1
+
+packages:
+
+  /jiti@1.18.2:
+    resolution: {integrity: sha512-QAdOptna2NYiSSpv0O/BwoHBSmz4YhpzJHyi+fnMRTXFjp7B8i/YG5Z8IfusxB1ufjcD2Sre1F3R+nX3fvy7gg==}
+    hasBin: true
+    dev: false
+
+  /pnpm@8.5.1:
+    resolution: {integrity: sha512-W6elL7Nww0a/MCICkzpkbxW6f99TQuX4DuJoDjWp39X08PKDkEpg4cgj3d6EtgYADcdQWl/eM8NdlLJVE3RgpA==}
+    engines: {node: '>=16.14'}
+    hasBin: true
+    dev: false

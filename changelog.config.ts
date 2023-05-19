@@ -20,6 +20,8 @@ function getDefaultConfig() {
     repo: {
       repo: 'oku-ui/payground-changelogen',
       provider: 'github',
+      domain: 'github.com',
+      token: process.env.GITHUB_TOKEN,
     },
   }
 }

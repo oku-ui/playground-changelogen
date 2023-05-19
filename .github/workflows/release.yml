@@ -10,7 +10,7 @@ on:
 
 jobs:
   release:
-    if: github.repository_owner == 'oku-ui' && github.ref_name.startsWith('v')
+    if: (github.repository_owner == 'oku-ui' && github.ref_name.startsWith('v'))
     runs-on: ubuntu-latest
 
     steps:

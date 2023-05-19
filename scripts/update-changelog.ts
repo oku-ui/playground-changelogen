@@ -3,6 +3,12 @@ import { $fetch } from 'ofetch'
 import { inc } from 'semver'
 import { generateMarkDown, loadChangelogConfig } from 'changelogen'
 import { determineBumpType, getLatestCommits, loadWorkspace } from './_utils'
+import { Octokit } from 'octokit'
+const octokit = new Octokit({
+  auth: 'YOUR-TOKEN'
+})
+
+
 
 async function main() {
   const workspace = await loadWorkspace(process.cwd())
@@ -44,6 +50,21 @@ async function main() {
 
   // Create a PR with release notes if none exists
   if (!currentPR) {
+    return await octokit.request('GET /repos/{owner}/{repo}/pulls', {
+      owner: 'oku-ui',
+      repo: 'playground-changelogen',
+      headers: {
+        'X-GitHub-Api-Version': '2022-11-28'
+      },
+      base: 'master',
+      body: {
+        title: `v${newVersion}`,
+        head: `v${newVersion}`,
+        base: 'master',
+        body: releaseNotes,
+        draft: true,
+      },
+    })
     return await $fetch('https://api.github.com/repos/oku-ui/playground-changelogen/pulls', {
       method: 'POST',
       headers: {

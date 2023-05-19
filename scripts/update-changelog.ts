@@ -47,7 +47,9 @@ async function main() {
     return await $fetch('https://api.github.com/repos/oku-ui/playground-changelogen/pulls', {
       method: 'POST',
       headers: {
+        Accept: 'application/vnd.github.v3+json',
         Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+        'X-GitHub-Api-Version': '2022-11-28'
       },
       body: {
         title: `v${newVersion}`,
@@ -66,7 +68,9 @@ async function main() {
      await $fetch(`https://api.github.com/repos/oku-ui/playground-changelogen/pulls/${currentPR.number}`, {
     method: 'PATCH',
     headers: {
+      Accept: 'application/vnd.github.v3+json',
       Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+      'X-GitHub-Api-Version': '2022-11-28'
     },
     body: {
       body: releaseNotes,

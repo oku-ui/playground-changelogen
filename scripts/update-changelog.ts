@@ -57,13 +57,9 @@ async function main() {
         'X-GitHub-Api-Version': '2022-11-28'
       },
       base: 'master',
-      body: {
-        title: `v${newVersion}`,
-        head: `v${newVersion}`,
-        base: 'master',
-        body: releaseNotes,
-        draft: true,
-      },
+      head: `oku-ui:v${newVersion}`,
+      body: releaseNotes,
+      draft: true,
     })
     return await $fetch('https://api.github.com/repos/oku-ui/playground-changelogen/pulls', {
       method: 'POST',

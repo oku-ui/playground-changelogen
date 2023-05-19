@@ -62,7 +62,8 @@ async function main() {
   console.log(releaseNotes, 'releaseNotes')
   console.log('')
   // Update release notes if the pull request does exist
-  await $fetch(`https://api.github.com/repos/oku-ui/playground-changelogen/pulls/${currentPR.number}`, {
+  try {
+     await $fetch(`https://api.github.com/repos/oku-ui/playground-changelogen/pulls/${currentPR.number}`, {
     method: 'PATCH',
     headers: {
       Authorization: `token ${process.env.GITHUB_TOKEN}`,
@@ -71,6 +72,9 @@ async function main() {
       body: releaseNotes,
     },
   })
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 main().catch((err) => {

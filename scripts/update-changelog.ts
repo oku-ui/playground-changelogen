@@ -5,7 +5,7 @@ import { generateMarkDown, loadChangelogConfig } from 'changelogen'
 import { determineBumpType, getLatestCommits, loadWorkspace } from './_utils'
 import { Octokit } from 'octokit'
 const octokit = new Octokit({
-  auth: 'YOUR-TOKEN'
+  auth: process.env.GITHUB_TOKEN,
 })
 
 

@@ -50,7 +50,7 @@ async function main() {
 
   // Create a PR with release notes if none exists
   if (!currentPR) {
-    return await octokit.request('GET /repos/{owner}/{repo}/pulls', {
+    return await octokit.request('POST /repos/{owner}/{repo}/pulls', {
       owner: 'oku-ui',
       repo: 'playground-changelogen',
       headers: {

@@ -18,7 +18,6 @@ async function main() {
   console.log(newVersion, 'newVersion')
   console.log(changelog, 'changelog')
 
-  return
   // Create and push a branch with bumped versions if it has not already been created
   const branchExists = execSync(`git ls-remote --heads origin v${newVersion}`).toString().trim().length > 0
   if (!branchExists) {
@@ -35,7 +34,7 @@ async function main() {
   }
 
   // Get the current PR for this release, if it exists
-  const [currentPR] = await $fetch(`https://api.github.com/repos/oku-ui/primitives/pulls?head=oku-ui:v${newVersion}`)
+  const [currentPR] = await $fetch(`https://api.github.com/repos/oku-ui/playground-changelogen/pulls?head=oku-ui:v${newVersion}`)
 
   const releaseNotes = [
     currentPR?.body.replace(/## 👉 Changelog[\s\S]*$/, '') || `> ${newVersion} is the next ${bumpType} release.\n>\n> **Timetable**: to be announced.`,
@@ -45,7 +44,7 @@ async function main() {
 
   // Create a PR with release notes if none exists
   if (!currentPR) {
-    return await $fetch('https://api.github.com/repos/oku-ui/primitives/pulls', {
+    return await $fetch('https://api.github.com/repos/oku-ui/playground-changelogen/pulls', {
       method: 'POST',
       headers: {
         Authorization: `token ${process.env.GITHUB_TOKEN}`,
@@ -63,7 +62,7 @@ async function main() {
   console.log(releaseNotes, 'releaseNotes')
   console.log('')
   // Update release notes if the pull request does exist
-  await $fetch(`https://api.github.com/repos/oku-ui/primitives/pulls/${currentPR.number}`, {
+  await $fetch(`https://api.github.com/repos/oku-ui/playground-changelogen/pulls/${currentPR.number}`, {
     method: 'PATCH',
     headers: {
       Authorization: `token ${process.env.GITHUB_TOKEN}`,

@@ -12,5 +12,13 @@
   "dependencies": {
     "jiti": "^1.18.2",
     "pnpm": "^8.5.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.2.1",
+    "changelogen": "^0.5.3",
+    "execa": "^7.1.1",
+    "ofetch": "^1.0.1",
+    "pathe": "^1.1.0",
+    "typescript": "^5.0.4"
   }
 }

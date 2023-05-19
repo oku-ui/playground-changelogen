@@ -18,7 +18,7 @@ function getDefaultConfig() {
       ci: { title: '🤖 CI' },
     },
     repo: {
-      repo: 'oku-ui/payground-changelogen',
+      repo: 'oku-ui/playground-changelogen',
       provider: 'github',
       domain: 'github.com',
       token: process.env.GITHUB_TOKEN,

@@ -47,7 +47,7 @@ async function main() {
     return await $fetch('https://api.github.com/repos/oku-ui/playground-changelogen/pulls', {
       method: 'POST',
       headers: {
-        Authorization: `token ${process.env.GITHUB_TOKEN}`,
+        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
       },
       body: {
         title: `v${newVersion}`,
@@ -66,7 +66,7 @@ async function main() {
      await $fetch(`https://api.github.com/repos/oku-ui/playground-changelogen/pulls/${currentPR.number}`, {
     method: 'PATCH',
     headers: {
-      Authorization: `token ${process.env.GITHUB_TOKEN}`,
+      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
     },
     body: {
       body: releaseNotes,

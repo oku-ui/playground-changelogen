@@ -5,12 +5,12 @@ permissions:
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - master
 
 jobs:
   release:
-    if: github.repository_owner == 'oku-ui'
+    if: github.repository_owner == 'oku-ui' && github.ref_name.startsWith('v')
     runs-on: ubuntu-latest
 
     steps:
